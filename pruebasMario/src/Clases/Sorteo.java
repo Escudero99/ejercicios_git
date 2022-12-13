@@ -1,5 +1,7 @@
 package Clases;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -52,7 +54,7 @@ public class Sorteo {
             this.mostrarParticipantes();
             while ( yn!='y' && yn!='n'){
                 System.out.println("#####################################");
-                System.out.print("###¿VOLVER A SORTEAR? [y/n]: ");
+                System.out.print("### ¿VOLVER A SORTEAR? [y/n]: ");
                 yn = leer.nextLine().charAt(0);
                 System.out.println("#####################################");
             }
@@ -60,14 +62,23 @@ public class Sorteo {
         }while(ejecutar);
     }
 
-    private UsuarioApp ganador() {
+    private List<UsuarioApp> ganador() {
         Random ganador = new Random();
-        return this.participantes.get(ganador.nextInt(0,this.participantes.size()-1));
+        ArrayList<Integer> ids = new ArrayList<>();
+        ArrayList<UsuarioApp> ganadores = new ArrayList<>();
+        for (int i=0; i<this.numeroGanadores-1; i++){
+            int z = ganador.nextInt(0,this.participantes.size()-1);
+            if(!ids.contains(z)){
+                ids.add(z);
+                ganadores.add();
+            }
+        }
+        return ganadores;
     }
 
-    private void sortear(UsuarioApp ganador) {
+    private void sortear(List<UsuarioApp> ganadores) {
         for (UsuarioApp u: this.participantes) {
-            if (u.equals(ganador)) u.ganarSorteo();
+            if (ganadores.contains(u)) u.ganarSorteo();
             u.participarSorteo();
         }
     }
