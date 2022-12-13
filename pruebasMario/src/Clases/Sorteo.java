@@ -58,6 +58,10 @@ public class Sorteo {
             }
             if(yn == 'n') ejecutar=false;
         }while(ejecutar);
+        System.out.println("#####################################");
+        System.out.println("##### GRACIAS POR USAR SORTEAPP #####");
+        System.out.println("#####            ME©            #####");
+        System.out.println("#####################################");
     }
 
     private UsuarioApp ganador() {
