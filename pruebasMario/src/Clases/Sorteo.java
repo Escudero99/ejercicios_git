@@ -21,14 +21,16 @@ public class Sorteo {
     public void paripe(){
         boolean ejecutar = true;
         Scanner leer = new Scanner(System.in);
+        char yn = ' ';
+        UsuarioApp ganador;
+        System.out.println("#####################################");
+        System.out.println("####### COMIENZO DEL SORTEO #########");
+        System.out.println("#####################################");
+        System.out.println("### LOS PARTICIPANTES DE HOY SON: ###");
+        System.out.println("#####################################");
+        this.mostrarParticipantes();
         do {
-            UsuarioApp ganador = this.ganador();
-            System.out.println("#####################################");
-            System.out.println("####### COMIENZO DEL SORTEO #########");
-            System.out.println("#####################################");
-            System.out.println("### LOS PARTICIPANTES DE HOY SON: ###");
-            System.out.println("#####################################");
-            this.mostrarParticipantes();
+            yn = ' ';
             System.out.println("#####################################");
             System.out.println("###### EL SORTEO COMIENZA EN: #######");
             System.out.println("#####################################");
@@ -37,6 +39,7 @@ public class Sorteo {
             System.out.println("################   2   ##############");
             System.out.println("#####################################");
             System.out.println("################   1   ##############");
+            ganador = this.ganador();
             this.sortear(ganador);
             System.out.println("#####################################");
             System.out.println("########## EL GANADOR ES: ###########");
@@ -47,20 +50,19 @@ public class Sorteo {
             System.out.println("####### EL ESTADO ACTUAL ES: ########");
             System.out.println("#####################################");
             this.mostrarParticipantes();
-            System.out.println("#####################################");
-            System.out.println("###### ¿VOLVER A SORTEAR? [y/n]######");
-            System.out.println("#####################################");
-            String yn = leer.next();
-            while (yn.equals("y")||yn.equals("n")){
-
+            while ( yn!='y' && yn!='n'){
+                System.out.println("#####################################");
+                System.out.print("###¿VOLVER A SORTEAR? [y/n]: ");
+                yn = leer.nextLine().charAt(0);
+                System.out.println("#####################################");
             }
-
+            if(yn == 'n') ejecutar=false;
         }while(ejecutar);
     }
 
     private UsuarioApp ganador() {
         Random ganador = new Random();
-        return this.participantes.get(ganador.nextInt(this.participantes.size()-1));
+        return this.participantes.get(ganador.nextInt(0,this.participantes.size()-1));
     }
 
     private void sortear(UsuarioApp ganador) {
