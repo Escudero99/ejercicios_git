@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.2.0] 14-12-2022
+### Added
+- Varios ganadores para un mismo sorteo añadido
+
+
 ## [1.1.0] 14-12-2022
 ### Added
 - CopyRight al final de desarrollo
