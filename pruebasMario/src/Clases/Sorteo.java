@@ -18,7 +18,7 @@ public class Sorteo {
         this.numeroGanadores = 1;
     }
 
-    public void paripe(){
+    public void mainSorteo(){
         boolean ejecutar = true;
         Scanner leer = new Scanner(System.in);
         char yn = ' ';
