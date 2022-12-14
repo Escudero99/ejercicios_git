@@ -24,7 +24,7 @@ public class Sorteo {
         boolean ejecutar = true;
         Scanner leer = new Scanner(System.in);
         char yn = ' ';
-        UsuarioApp ganador;
+        ArrayList<UsuarioApp> ganadores;
         System.out.println("#####################################");
         System.out.println("####### COMIENZO DEL SORTEO #########");
         System.out.println("#####################################");
@@ -36,18 +36,23 @@ public class Sorteo {
             System.out.println("#####################################");
             System.out.println("###### EL SORTEO COMIENZA EN: #######");
             System.out.println("#####################################");
-            System.out.println("################   3   ##############");
+            System.out.println("##############   3   ################");
             System.out.println("#####################################");
-            System.out.println("################   2   ##############");
+            System.out.println("##############   2   ################");
             System.out.println("#####################################");
-            System.out.println("################   1   ##############");
-            ganador = this.ganador();
-            this.sortear(ganador);
-            System.out.println("#####################################");
-            System.out.println("########## EL GANADOR ES: ###########");
-            System.out.println("#####################################");
-            System.out.println("########## " + ganador + " ###########");
-            System.out.println("#####################################");
+            System.out.println("##############   1   ################");
+            ganadores = this.ganadores();
+            this.sortear(ganadores);
+            if(this.numeroGanadores==1){
+                System.out.println("#####################################");
+                System.out.println("########## EL GANADOR ES: ###########");
+                System.out.println("#####################################");
+            }else {
+                System.out.println("#####################################");
+                System.out.println("######## LOS GANADORES SON: #########");
+                System.out.println("#####################################");
+            }
+            this.mostrarGanadores(ganadores);
             System.out.println("#####################################");
             System.out.println("####### EL ESTADO ACTUAL ES: ########");
             System.out.println("#####################################");
@@ -62,15 +67,15 @@ public class Sorteo {
         }while(ejecutar);
     }
 
-    private List<UsuarioApp> ganador() {
+    private ArrayList<UsuarioApp> ganadores() {
         Random ganador = new Random();
         ArrayList<Integer> ids = new ArrayList<>();
         ArrayList<UsuarioApp> ganadores = new ArrayList<>();
-        for (int i=0; i<this.numeroGanadores-1; i++){
+        for (int i=0; i<this.numeroGanadores; i++){
             int z = ganador.nextInt(0,this.participantes.size()-1);
             if(!ids.contains(z)){
                 ids.add(z);
-                ganadores.add();
+                ganadores.add(this.participantes.get(z));
             }
         }
         return ganadores;
@@ -86,6 +91,11 @@ public class Sorteo {
     private void mostrarParticipantes() {
         for (UsuarioApp p : this.participantes) {
             System.out.println("###### "+p+" con: "+p.getNumVictoriasSorteo()+"/"+ p.getNumParticipacionesSorteo() +" victorias ######");
+        }
+    }
+    private void mostrarGanadores(List<UsuarioApp> ganadores) {
+        for (UsuarioApp p : ganadores) {
+            System.out.println("############### "+p+" ################");
         }
     }
 }

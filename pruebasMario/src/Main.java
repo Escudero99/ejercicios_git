@@ -19,7 +19,7 @@ public class Main {
         participantes.add(pipi);
         participantes.add(papa);
         participantes.add(pipo);
-        Sorteo sorteo = new Sorteo(participantes);
+        Sorteo sorteo = new Sorteo(participantes,2);
         sorteo.paripe();
     }
 }
